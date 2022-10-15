@@ -1,42 +1,41 @@
 type Query {
-  jobs: [Job!]
+  company(id: ID!): Company
   companies: [Company!]
   courses: [Course!]
-  users: [User!]
+  course(id: ID!): Course!
+  jobs: [Job!]
+  job(id: ID!): Job!
   projects: [Project!]
+  project(id: ID!): Project!
 }
 
 type Company {
   id: ID!
-  name: String!
   address: String
   description: String
+  name: String!
 }
 
 type Course {
   id: ID!
-  name: String!
   author: String!
   description: String
+  name: String!
   rating: Int
 }
 
 type Job {
   id: ID!
-  title: String!
+  company: Company!
   description: String
-  company: Company
+  email: String!
+  jobDuration: Int
+  title: String!
 }
 
 type Project {
   id: ID!
-  name: String!
   description: String
+  name: String!
   rating: Int
-}
-
-type User {
-  id: ID!
-  email: String!
-  name: String
 }

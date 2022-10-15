@@ -20,18 +20,21 @@ model User {
 }
 
 model Job {
-  id      String  @id @default(cuid())
-  email   String  @unique
-  name    String?
-  address String?
+  id          String  @id @default(cuid())
+  description String  @default("")
+  email       String
+  companyId   String
+  jobDuration Int?
+  title       String?
+  address     String?
 }
 
 model Course {
-  id          String  @id @default(cuid())
-  author      String  @unique
+  id          String   @id @default(cuid())
+  author      String
   description String?
   rating      Int?
-  isCertified Boolean
+  isCertified Boolean?
 }
 
 model Company {

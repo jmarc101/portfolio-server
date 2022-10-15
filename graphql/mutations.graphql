@@ -1,0 +1,38 @@
+type Mutation {
+  createCourse(input: CreateCourseInput!): Course
+  createCompany(input: CreateCompanyInput!): Company
+  createJob(input: CreateJobInput!): Job
+  createProject(input: CreateProjectInput!): Project
+
+  deleteCourse(id: String!): Course
+  deleteCompany(id: String!): Company
+  deleteJob(id: String!): Job
+  deleteProject(id: String!): Project
+}
+
+input CreateProjectInput {
+  name: String!
+  description: String
+  rating: Int
+}
+
+input CreateCompanyInput {
+  name: String!
+  address: String
+  description: String
+}
+
+input CreateCourseInput {
+  name: String!
+  author: String!
+  description: String
+  rating: Int
+}
+
+input CreateJobInput {
+  title: String!
+  email: String!
+  description: String
+  companyId: String
+  jobDuration: Int
+}

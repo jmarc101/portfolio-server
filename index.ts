@@ -10,12 +10,16 @@ const app: Express = express();
 dotenv.config();
 const url = process.env.SERVER_URL;
 const port = process.env.PORT || 3000;
-const graphQlSchemaPath = process.env.GRAPQL_SCHEMA__ROOT_PATH || "";
+const queriesSchemaPath = process.env.GRAPQL_QUERIES_SCHEMA_PATH || "";
+const mutationSchemaPath = process.env.GRAPQL_MUTATIONS_SCHEMA_PATH || "";
 
 // starting apolloServer to use graphql
 // applyMiddleware intercepts app to set path at /graphql
-const typeDefs = await readFile(graphQlSchemaPath, 'utf-8');
-const apolloServer = new ApolloServer({typeDefs, resolvers});
+// we are able to split graphql typeDefs by passing array in server init
+const queryTypeDefs = await readFile(queriesSchemaPath, 'utf-8');
+const mutationTypeDefs = await readFile(mutationSchemaPath, 'utf-8');
+const apolloServer = new ApolloServer({typeDefs: [queryTypeDefs, mutationTypeDefs], resolvers});
+
 await apolloServer.start();
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
