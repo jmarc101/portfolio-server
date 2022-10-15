@@ -9,11 +9,12 @@ const app: Express = express();
 // package dotenv processes .env file
 dotenv.config();
 const url = process.env.SERVER_URL;
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
+const graphQlSchemaPath = process.env.GRAPQL_SCHEMA__ROOT_PATH || "";
 
-// starting apolloServer to use graphql 
+// starting apolloServer to use graphql
 // applyMiddleware intercepts app to set path at /graphql
-const typeDefs = await readFile("./graphql/schema.graphql", 'utf-8');
+const typeDefs = await readFile(graphQlSchemaPath, 'utf-8');
 const apolloServer = new ApolloServer({typeDefs, resolvers});
 await apolloServer.start();
 apolloServer.applyMiddleware({ app, path: '/graphql' });
