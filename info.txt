@@ -1,0 +1,9 @@
+-----------------------------------------------------------------------------------
+|   info.txt is a file dedicated to store commands and other useful information   |
+-----------------------------------------------------------------------------------
+
+
+Prisma migration commands
+
+init => prisma migrate dev --name init
+sync schema => prisma migrate dev --name [NameOfMigration]

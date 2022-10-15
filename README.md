@@ -1,6 +1,9 @@
 # portfolio-server
 
-## prisma migration
+## Stack used
 
-init => prisma migrate dev --name init
-sync schema => prisma migrate dev --name [NameOfMigration]
+- Typescript (language)
+- Node / express (server)
+- GraphQL (query-api)
+- Sqllite (database)
+- Prisma (ORM)
