@@ -5,5 +5,5 @@
 - Typescript (language)
 - Node / express (server)
 - GraphQL (query-api)
-- Sqllite (database)
+- Sqlite (database)
 - Prisma (ORM)
