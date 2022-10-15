@@ -1,0 +1,27 @@
+type Query {
+    jobs: [Job!]
+    companies: [Company!]
+    courses: [Courses!]
+}
+
+type Job {
+    id: ID!
+    title: String!
+    description: String
+    company: Company
+}
+
+type Company {
+    id: ID!
+    name: String!
+    address: String
+    description: String
+}
+
+type Courses {
+    id: ID!
+    name: String!
+    author: String!
+    description: String
+    rating:  Int
+}
