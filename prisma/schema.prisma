@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Getting Started with prisma => https://www.prisma.io/docs/getting-started/quickstart
+// Schema reference doc => https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  password String
+  name     String?
+}
+
+model Job {
+  id      String  @id @default(cuid())
+  email   String  @unique
+  name    String?
+  address String?
+}
+
+model Course {
+  id          String  @id @default(cuid())
+  author      String  @unique
+  description String?
+  rating      Int?
+  isCertified Boolean
+}
+
+model Company {
+  id          String  @id @default(cuid())
+  name        String?
+  address     String?
+  description String?
+}
+
+model Project {
+  id          String  @id @default(cuid())
+  name        String?
+  description String?
+  rating      Int?
+}
